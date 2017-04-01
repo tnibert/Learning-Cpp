@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//http://www.cplusplus.com/doc/tutorial/classes/
 //:: is scope operator
 //default access for class members is private
 
@@ -10,6 +11,7 @@ class Rect {
 	int x, y;
 	public:
 		Rect(int, int);
+		Rect();
 		int area(void)
 		{
 			return (width * height);
@@ -26,11 +28,23 @@ Rect::Rect(int a, int b)
 	height = b;
 }
 
+//yas I can overload
+Rect::Rect() {
+	width = 5;
+	height = 5;
+}
+
 int main()
 {
-	Rect r1(3,4), r2(5,6);
-	cout << "r1 area: " << r1.area() << " perimiter: " << r1.perim() << endl;
-	cout << "r2 area: " << r2.area() << " perimeter: " << r2.perim() << endl;
+	//could assign with Rect r1(3,4) or Rect r2 for no arg constructor
 
+	Rect  *r[3];
+	r[0] = new Rect(3,4);
+	r[1] = new Rect(5,6);
+	r[2] = new Rect;	//no arguments, overload constructor
+	//cout << "r1 area: " << r1.area() << " perimiter: " << r1.perim() << endl;
+	for (int i = 0; i < 3; i++){
+		cout << "r" << i << " area: " << r[i]->area() << " perimeter: " << r[i]->perim() << endl;
+	}
 	return 0;
 }
