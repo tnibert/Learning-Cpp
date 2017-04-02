@@ -4,6 +4,7 @@ using namespace std;
 //http://www.cplusplus.com/doc/tutorial/classes/
 //:: is scope operator
 //default access for class members is private
+//classes can be defined with struct but default access is public
 
 class Rect {
 
@@ -26,6 +27,7 @@ class Rect {
 		*/
 		Rect(int, int);
 		Rect();
+		Rect operator+ (const Rect&);
 		int area(void)
 		{
 			return (width * height);
@@ -35,6 +37,15 @@ class Rect {
 			return (width*2)+(height*2);
 		}
 };
+
+//overload operator
+Rect Rect::operator+ (const Rect &param)
+{
+	Rect temp;
+	temp.width = width + param.width;
+	temp.height = height + param.height;
+	return temp;
+}
 
 Rect::Rect(int a, int b)
 {
@@ -53,12 +64,14 @@ int main()
 {
 	//could assign with Rect r1(3,4), or Rect r2 for default constructor
 
-	Rect  *r[3];
+	Rect  *r[4];
 	r[0] = new Rect(3,4);
 	r[1] = new Rect(5,6);
 	r[2] = new Rect;	//no arguments, default constructor
+	Rect test = *r[0] + *r[1];	//using the overloaded operator
+	r[3] = &test;
 	//cout << "r1 area: " << r1.area() << " perimiter: " << r1.perim() << endl;
-	for (int i = 0; i < 3; i++){
+	for (int i = 0; i < 4; i++){
 		cout << "r" << i << " area: " << (*r[i]).area() << " perimeter: " << r[i]->perim() << endl;
 	}
 
