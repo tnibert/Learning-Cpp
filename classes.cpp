@@ -44,7 +44,7 @@ int main()
 	r[2] = new Rect;	//no arguments, overload constructor
 	//cout << "r1 area: " << r1.area() << " perimiter: " << r1.perim() << endl;
 	for (int i = 0; i < 3; i++){
-		cout << "r" << i << " area: " << r[i]->area() << " perimeter: " << r[i]->perim() << endl;
+		cout << "r" << i << " area: " << (*r[i]).area() << " perimeter: " << r[i]->perim() << endl;
 	}
 	return 0;
 }
