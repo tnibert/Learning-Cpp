@@ -16,11 +16,17 @@ class Example4 {
 	}
     // access content:
     const string& content() const {return *ptr;}
+
+    // copy constructor to deep copy
+    // shallow copy means copying each variable value, e.g. pointer addresses so multiple objects would point to same memory
+    Example4 (const Example4& x) : ptr(new string(x.content())) {
+	printf("In copy constructor\n");
+	}
 };
 
 int main () {
-  Example4 foo;
-  Example4 bar ("Example");
+  Example4 foo ("Example");
+  Example4 bar = foo;
 
   cout << "bar's content: " << bar.content() << '\n';
 
