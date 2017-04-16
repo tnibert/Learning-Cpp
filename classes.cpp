@@ -10,6 +10,7 @@ class Rect {
 
 	int width, height;
 	int x, y;
+	static int n;	//shared between all instances of class
 	public:
 		//so there are way too many ways to initialize... check link for all of them
 		/*
@@ -92,5 +93,23 @@ int main()
 	//free the memory
 	delete bar;
 	delete[] baz;
+
 	return 0;
 }
+
+//when an object is declared const, access to its data from outside the class is read only
+//methods cannot be called unless also declared as const
+//int funcname() const {}
+//look at link for more details, lots of restrictions
+//essentially consts only have access to consts?
+
+//blah templates..
+
+/*special members
+Default constructor	C::C();
+Destructor	C::~C();
+Copy constructor	C::C (const C&);
+Copy assignment	C& operator= (const C&);
+Move constructor	C::C (C&&);
+Move assignment	C& operator= (C&&);
+*/
